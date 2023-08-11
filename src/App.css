@@ -1,38 +1,227 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  background-color: #ffffff;
+  position: relative;
+  margin: 3rem auto;
+  color: #333333;
+  max-width: 1000px;
+  min-height: 100vh;
+}
+
+.greeting {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.header {
+  font-size: 20px;
+  letter-spacing: -2px;
+  margin: 0;
+  font-family: "Raleway", sans-serif;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.title {
+  font-weight: 700;
+  font-size: 36px;
+  margin-top: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.title2 {
+  font-weight: normal;
+  font-size: 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 600px) {
+  .lists {
+    flex-direction: column;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .App .column {
+    width: 100%;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@media screen and (min-width: 600px) {
+  .lists {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .App .column {
+    width: 30%;
+  }
+}
+
+.droppable-col {
+  width: 100%;
+  padding: 10px 10px 0 10px;
+  border-radius: 7px;
   display: flex;
   flex-direction: column;
+}
+
+/* ------------ INPUT ------------ */
+
+.inputContainer {
+  justify-content: space-between;
+  margin: 1.5rem 0;
+  font-size: 14px;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.input {
+  color: #000;
+  font-size: 14px;
+  border-radius: 12px;
+  border: 1px solid #bdbdbd;
+  width: 80%;
+  padding: 1rem;
+  margin-right: 6px;
+  font-family: "Raleway", sans-serif;
+}
+
+.input::placeholder {
+  color: #828282;
+  font-size: 14px;
+}
+
+.addButton {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 12px;
+  background: #2f80ed;
+  box-shadow: 0px 2px 6px 0px rgba(127, 177, 243, 0.4);
+  width: 15%;
+  padding: 1rem 0;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.addButton:hover:enabled {
+  opacity: 0.7;
+}
+
+.addButton:disabled {
+  background: #2f80ed90;
+  cursor: not-allowed;
+}
+
+/* ------------ TODO ------------ */
+
+h3 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.item {
+  margin-bottom: 10px;
+  background-color: white;
+  border: 1px solid rgb(0, 0, 0);
+  padding: 10px;
+  border-radius: 7px;
+  position: relative;
+  font-family: "Raleway", sans-serif;
+  cursor: pointer;
+}
+
+.item.dragging {
+  background-color: rgb(249, 255, 200);
+}
+
+.done {
+  text-decoration: line-through;
+  background-color: #ffea00;
+}
+
+.todo {
+  background-color: #2f80ed;
+}
+
+.important {
+  background-color: #f46464;
+}
+
+.todo-actions {
+  padding-top: 10px;
+}
+
+.deleteIcon {
+  color: #9d9c9c;
+  font-size: 20px;
+  margin: 0 0.5rem;
+  position: absolute;
+  right: 1px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.deleteIcon:hover {
+  color: red;
+}
+
+.editIcon {
+  color: #9d9c9c;
+  font-size: 20px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.editIcon:hover {
+  color: rgb(17, 0, 255);
+}
+
+.submitEditIcon {
+  color: #bdbdbd;
+  font-size: 20px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.submitEditIcon:hover {
+  color: rgb(3, 197, 39);
+}
+
+/* ------------ DELETE ------------ */
+
+.deleteContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1.5rem 0;
+}
+
+.deleteButton {
+  display: flex;
+  gap: 0.3rem;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  border: 0;
+  border-radius: 4px;
+  background: rgb(221, 23, 23);
+  padding: 0.8rem 1.5rem;
+  transition: 0.2s;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.deleteButton:hover {
+  opacity: 0.7;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.deleteButton:disabled {
+  background: #eb575783;
+  cursor: not-allowed;
 }
